@@ -451,11 +451,15 @@ begin
       begin
         TrType := ftString;
         TrLen := SQLLen;
+        if SQLSubType > 0 then           //field has Charset <> NONE
+          Trlen := TrLen div SQLSubType; 
       end;
     SQL_TEXT :
       begin
         TrType := ftFixedChar;
         TrLen := SQLLen;
+        if SQLSubType > 0 then           //field has Charset <> NONE
+          Trlen := TrLen div SQLSubType; 
       end;
     SQL_TYPE_DATE :
       TrType := ftDate;
